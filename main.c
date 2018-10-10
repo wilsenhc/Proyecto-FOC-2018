@@ -26,6 +26,7 @@ int main()
     int **matriz_Bm = NULL;
     int *vector_Cj = NULL;
     int *vector_Cb = NULL;
+    int *vector_Xb = NULL;
 
     scanf(" %s", tipo_problema);
     scanf(" %d", &num_incognitas);
@@ -49,6 +50,7 @@ int main()
 
     vector_Cj = (int *) calloc(sizeof(int), num_restricciones);
     vector_Cb = (int *) calloc(sizeof(int), num_restricciones);
+    vector_Xb = (int *) calloc(sizeof(int), num_restricciones);
 
     for (i = 0; i < num_incognitas; i++)
     {
