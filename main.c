@@ -21,7 +21,8 @@ int main()
     int num_incognitas = 0;
     int num_restricciones = 0;
     int *func_obj = NULL;
-    int **matriz_rest = NULL;
+    int **matriz_A = NULL;
+    int *vector_B = NULL;
 
     scanf(" %s", tipo_problema);
     scanf(" %d", &num_incognitas);
@@ -29,11 +30,13 @@ int main()
 
     func_obj = (int *) calloc(sizeof(int), num_incognitas);
 
-    matriz_rest = (int **) calloc(sizeof(int*), num_restricciones);
+    matriz_A = (int **) calloc(sizeof(int*), num_restricciones);
     for (i = 0; i < num_restricciones; i++)
     {
-        matriz_rest[i] = (int *) calloc(sizeof(int), num_incognitas + 1);
+        matriz_A[i] = (int *) calloc(sizeof(int), num_incognitas);
     }
+
+    vector_B = (int *) calloc(sizeof(int), num_restricciones);
 
     for (i = 0; i < num_incognitas; i++)
     {
@@ -44,12 +47,12 @@ int main()
     {
         for (j = 0; j < num_incognitas; j++)
         {
-            scanf(" %d", &matriz_rest[i][j]);
+            scanf(" %d", &matriz_A[i][j]);
         }
 
         scanf(" %s", tipo_restriccion);
 
-        scanf(" %d", &matriz_rest[i][j]);
+        scanf(" %d", &vector_B[i]);
     }
 
     return 0;
