@@ -17,16 +17,12 @@ int main()
     // Lectura de archivo de entrada
     // TODO: Extraer a una procedimiento a parte
     char tipo_problema[4] = "";
-    char tipo_restriccion[3] = "";
     int num_incognitas = 0;
     int num_restricciones = 0;
     int *func_obj = NULL;
     int **matriz_A = NULL;
     int *vector_B = NULL;
-    int **matriz_Bm = NULL;
-    int *vector_Cj = NULL;
-    int *vector_Cb = NULL;
-    int *vector_Xb = NULL;
+    char **vector_R = NULL;
 
     scanf(" %s", tipo_problema);
     scanf(" %d", &num_incognitas);
@@ -41,16 +37,12 @@ int main()
     }
 
     vector_B = (int *) calloc(sizeof(int), num_restricciones);
-
-    matriz_Bm = (int **) calloc(sizeof(int*), num_restricciones);
+    vector_R = (char **) calloc(sizeof(char**), num_restricciones);
     for (i = 0; i < num_restricciones; i++)
     {
-        matriz_Bm[i] = (int *) calloc(sizeof(int), num_incognitas);
+        vector_R[i] = (char*) calloc(sizeof(char), 3);
     }
 
-    vector_Cj = (int *) calloc(sizeof(int), num_restricciones);
-    vector_Cb = (int *) calloc(sizeof(int), num_restricciones);
-    vector_Xb = (int *) calloc(sizeof(int), num_restricciones);
 
     for (i = 0; i < num_incognitas; i++)
     {
@@ -63,10 +55,18 @@ int main()
         {
             scanf(" %d", &matriz_A[i][j]);
         }
-
-        scanf(" %s", tipo_restriccion);
+        scanf(" %s", vector_R[i]);
 
         scanf(" %d", &vector_B[i]);
+    }
+
+    for (i = 0; i < num_restricciones; i++)
+    {
+        for (j = 0; j < num_incognitas; j++)
+        {
+            printf("%2d ", matriz_A[i][j]);
+        }
+        printf("%s %d\n", vector_R[i], vector_B[i]);
     }
 
     return 0;
